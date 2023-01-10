@@ -1,6 +1,13 @@
 import React from "react";
-import sytles from "./TaskList.module.css";
+import styles from "./TaskList.module.css";
+import { Tasks } from "./components/tasklist.model";
 
-export const TaskList = (): JSX.Element => {
-  return <div>Task List</div>;
+export const TaskList = (props: Tasks): JSX.Element => {
+  return (
+    <ul>
+      {props.tasks.map((task) => (
+        <li key={task.id}>{task.taskName}</li>
+      ))}
+    </ul>
+  );
 };
