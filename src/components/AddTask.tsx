@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./AddTask.module.css";
 
 export const AddTask = (): JSX.Element => {
-  return <div>Addform</div>;
+  const taskInput = useRef(null);
+  return (
+    <form>
+      <input type="text" placeholder="Add task" ref={taskInput} />
+      <button type="submit">ADD</button>
+    </form>
+  );
 };
