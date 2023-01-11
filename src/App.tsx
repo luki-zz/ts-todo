@@ -9,9 +9,13 @@ function App() {
   const [tasks, setTasks] = useState<Tasks[]>([
     { id: 1, taskName: "Odebrać dziecie ze szkoły" },
   ]);
+
+  const handleAddTask = (taskName: string) => {
+    setTasks((prevTasks) => [...prevTasks, { id: Date.now(), taskName }]);
+  };
   return (
     <>
-      <AddTask />
+      <AddTask taskHandler={handleAddTask} />
       <TaskList tasks={tasks} />
     </>
   );
