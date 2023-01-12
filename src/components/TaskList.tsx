@@ -1,12 +1,19 @@
 import React from "react";
-import styles from "./TaskList.module.css";
-import { Tasks } from "./components/tasklist.model";
+import { TaskModel } from "./task.model";
 
-export const TaskList = (props: Tasks): JSX.Element => {
+export type TasksProps = {
+  tasks: TaskModel[];
+  onRemoveTask: (id: number) => void;
+};
+
+export const TaskList = (props: TasksProps): JSX.Element => {
   return (
     <ul>
-      {props.tasks.map((task) => (
-        <li key={task.id}>{task.taskName}</li>
+      {props.tasks.map((task: TaskModel) => (
+        <li key={task.id}>
+          {task.taskName}
+          <button onClick={() => props.onRemoveTask(task.id)}>Remove</button>
+        </li>
       ))}
     </ul>
   );
